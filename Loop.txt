@@ -1,0 +1,60 @@
+package main
+
+import "fmt"
+
+//lint:ignore U1000 This function will be used in the future
+
+func main1() {
+
+	var conferenceName = "Go Conference" // var is a keyword which is used when the value of that variable can be changed
+	const conferenceTickets = 50         // const keyword is used when value of the varibale does not needs to be changed
+	var remainingTickets uint = 50
+	bookings := []string{}
+
+	fmt.Printf("Welcome to our %v booking application\n", conferenceName)
+	fmt.Printf("We have total of %v tickets and %v are still available\n", conferenceTickets, remainingTickets)
+	fmt.Printf("Get your tickets here to attend\n")
+
+	// using of loops
+	// In Golang we have only for loop
+
+	// To run an infinite loop
+	// Syntax : for { }
+
+	for {
+
+		var firstName string
+		var lastName string
+		var email string
+		var userTickets uint
+
+		fmt.Println("enter your firstname")
+		fmt.Scan(&firstName)
+
+		fmt.Println("enter your lastname")
+		fmt.Scan(&lastName)
+
+		fmt.Println("enter your email address")
+		fmt.Scan(&email)
+
+		fmt.Println("enter no. of tickets ")
+		fmt.Scan(&userTickets)
+
+		remainingTickets = remainingTickets - userTickets
+
+		//bookings[0] = firstName + " " + lastName
+		bookings = append(bookings, firstName+" "+lastName) // -> With slices to add the element we can use the method of slicing
+
+		//With the comcept of slices :
+		fmt.Printf("The whole slice: %v\n", bookings)
+		fmt.Printf("The first value of slice: %v\n", bookings[0])
+		fmt.Printf("The type of slice: %T\n", bookings)
+		fmt.Printf("The length of slice: %v\n", len(bookings))
+
+		fmt.Printf("Thank you %v %v for booking %v tickets. You will recieve a confirmation email at %v\n", firstName, lastName, userTickets, email)
+		fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
+
+		fmt.Printf("These are all our bookings: %v\n", bookings)
+	}
+
+}
